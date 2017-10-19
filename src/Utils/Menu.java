@@ -70,7 +70,6 @@ public class Menu {
 
         do {
             System.out.println("1. Añadir producto");
-            System.out.println("2. Añadir proveedore");
             System.out.println("3. Volver");
             option = leerUsuario.nextInt();
 
@@ -103,7 +102,7 @@ public class Menu {
         do {
             System.out.println("1. Listar todos los producto");
             System.out.println("2. listar por tipo");
-            System.out.println("3. listar todos los proveedores");
+            System.out.println("3. listar por proveedor");
             System.out.println("4. Volver");
             option = leerUsuario.nextInt();
 
@@ -175,9 +174,7 @@ public class Menu {
         do {
             System.out.println("1. Borrar todos los productos");
             System.out.println("2. Borrar por tipo de producto");
-            System.out.println("3. Borrar por nombre de producto");
-            System.out.println("4. Borrar proveedor por nombre");
-            System.out.println("5. Salir");
+            System.out.println("3. Salir");
             option = leerUsuario.nextInt();
 
             switch (option) {

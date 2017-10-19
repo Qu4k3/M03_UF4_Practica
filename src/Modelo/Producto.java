@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package Modelo;
 
 import java.util.Date;
 
@@ -21,11 +21,10 @@ public abstract class  Producto {
     protected float precio;
     final double IVA= 1.21;
     protected String formatoProducto;
-    //protected Proveedor proveedor;
+    
 
 
-    public Producto(int id, String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio, String formatoProducto) {
-        this.id = id;
+    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio, String formatoProducto) {
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
         this.unidades = unidades;
@@ -35,5 +34,5 @@ public abstract class  Producto {
         this.formatoProducto = formatoProducto;
     }
 
-    //public abstract
+    public abstract double totalPrecio(int unidades);
 }
