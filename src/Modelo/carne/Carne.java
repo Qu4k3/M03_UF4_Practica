@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.carne;
 
-/**
- *
- * @author HangjieHuang
- */
-public class Carne {
+import Modelo.Producto;
+import java.util.Date;
+
+public abstract class Carne extends Producto {
+    
+    protected boolean adobado = false;  // por defecto false
+    protected double peso;  // en gramos
+    
+    public Carne(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
+        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio);
+    }
+   
     
 }

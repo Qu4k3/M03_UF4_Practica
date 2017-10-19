@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.verdura;
 
-/**
- *
- * @author HangjieHuang
- */
-public class Verdura {
+import Modelo.Producto;
+import java.util.Date;
+
+public abstract class Verdura extends Producto {
+    
+    protected String origen;
+    
+    public Verdura(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
+        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio);
+    }
     
 }
