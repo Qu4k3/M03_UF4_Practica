@@ -10,7 +10,7 @@ package Utils;
  *
  * @author HangjieHuang
  */
-public class Funcion {
+public class Funcions {
 
     
 
