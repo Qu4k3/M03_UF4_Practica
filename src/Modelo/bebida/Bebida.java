@@ -15,9 +15,10 @@ import java.util.Date;
 public abstract class Bebida extends Producto{
     protected String formato;
 
-    public Bebida(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio, String formatoProducto) {
-        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio, formatoProducto);
+    public Bebida(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
+        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio);
     }
+
     
     
     
