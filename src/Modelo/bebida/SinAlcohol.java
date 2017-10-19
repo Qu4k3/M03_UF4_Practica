@@ -9,6 +9,24 @@ package Modelo.bebida;
  *
  * @author HangjieHuang
  */
-public class SinAlcohol {
+public class SinAlcohol extends Bebida{
+
+
+    public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd, float precio, String formato) {
+        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio, formato);
+    }
+
+    @Override
+    public double totalPrecio(int unidades) {
+        return unidades*precio;
+    }
+
+   
+
+     
     
+    @Override
+    public String toString() {
+        return "SinAlcohol{"+id+nombreProducto + '}';
+    }
 }
