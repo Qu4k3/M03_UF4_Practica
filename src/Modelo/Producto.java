@@ -6,13 +6,15 @@
 package Modelo;
 
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
  * @author HangjieHuang
  */
 public abstract class  Producto {
-    protected int id;
+    protected static final AtomicInteger count = new AtomicInteger();
+    protected final int id;
     protected String nombreProducto;
     protected String nombreMarca;
     protected int unidades;
@@ -20,19 +22,26 @@ public abstract class  Producto {
     protected Date fechaAdd;
     protected float precio;
     final double IVA= 1.21;
-    protected String formatoProducto;
-    
 
-
-    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio, String formatoProducto) {
+    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
+        this.id = count.incrementAndGet();
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
         this.unidades = unidades;
         this.mantenerFresco = mantenerFresco;
         this.fechaAdd = fechaAdd;
         this.precio = precio;
-        this.formatoProducto = formatoProducto;
     }
+    
+
+
 
     public abstract double totalPrecio(int unidades);
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombreProducto=" + nombreProducto + ", nombreMarca=" + nombreMarca + ", unidades=" + unidades + ", mantenerFresco=" + mantenerFresco + ", fechaAdd=" + fechaAdd + ", precio=" + precio + ", IVA=" + IVA + '}';
+    }
+    
+    
 }
