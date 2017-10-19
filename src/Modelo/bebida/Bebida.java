@@ -6,7 +6,7 @@
 package Modelo.bebida;
 
 import Modelo.Producto;
-import java.util.Date;
+
 
 /**
  *
@@ -15,9 +15,13 @@ import java.util.Date;
 public abstract class Bebida extends Producto{
     protected String formato;
 
-    public Bebida(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
+    public Bebida(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd, float precio,String formato) {
         super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio);
+        this.formato=formato;
     }
+
+    
+
 
     
     
