@@ -11,9 +11,13 @@ import java.util.Scanner;
  *
  * @author HangjieHuang
  */
-public class Menu {
+public class Menus {
 
     static Scanner leerUsuario = new Scanner(System.in);
+    
+    public static void menuCargarDatos() {
+        
+    }
 
     public static void menuPrincipal() {
 
@@ -21,7 +25,7 @@ public class Menu {
         boolean salir = false;
 
         do {
-            System.out.println("----------MENU----------");
+            System.out.println(Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
             System.out.println("1. Carga datos de inicio");
             System.out.println("2. Añadir productos");
             System.out.println("3. Ver/listar productos");
@@ -29,6 +33,8 @@ public class Menu {
             System.out.println("5. Borrar datos");
             System.out.println("6. Vender");
             System.out.println("7. Salir");
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Que desea realizar?\n" + Colors.ANSI_RESET);
+            System.out.print(Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
 
             option = leerUsuario.nextInt();
 
