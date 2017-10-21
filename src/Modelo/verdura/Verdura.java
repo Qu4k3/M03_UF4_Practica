@@ -1,7 +1,6 @@
 package Modelo.verdura;
 
 import Modelo.Producto;
-import java.util.Date;
 
 public abstract class Verdura extends Producto {
     
@@ -10,7 +9,6 @@ public abstract class Verdura extends Producto {
     public Verdura(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd) {
         super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd);
     }
-
 
     
     

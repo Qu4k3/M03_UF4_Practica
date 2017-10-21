@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.bebida;
 
-/**
- *
- * @author HangjieHuang
- */
 public class SinAlcohol extends Bebida{
     private double precioPorUnidad;
+    private String sabor;
+    private boolean azucarada;
 
-    public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd, String formato,double precioPorUnidad) {
-        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, formato);
+    public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd,double precioPorUnidad, String sabor, boolean azucarada) {
+        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd);
         this.precioPorUnidad=precioPorUnidad;
+        this.sabor = sabor;
+        this.conservarFresco = conservarFresco;
     }
 
     @Override

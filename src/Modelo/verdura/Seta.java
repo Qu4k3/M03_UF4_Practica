@@ -1,7 +1,5 @@
 package Modelo.verdura;
 
-import java.util.Date;
-
 public class Seta extends Verdura {
 
     public Seta(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd) {
