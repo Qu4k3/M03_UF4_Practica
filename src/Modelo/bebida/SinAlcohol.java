@@ -1,28 +1,26 @@
 package Modelo.bebida;
 
 public class SinAlcohol extends Bebida{
-    private double precioPorUnidad;
-    private String sabor;
     private boolean azucarada;
 
-    public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd,double precioPorUnidad, String sabor, boolean azucarada) {
-        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd);
-        this.precioPorUnidad=precioPorUnidad;
-        this.sabor = sabor;
-        this.conservarFresco = conservarFresco;
+    public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, double precioPorUnidad, String formato, boolean azucarada) {
+        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, formato);
+        this.azucarada = azucarada;
     }
+
+
 
     @Override
     public double totalPrecio(int unidades) {
         return unidades*precioPorUnidad;
-    }
+            }
 
-   
-
-     
-    //imprimir datos
     @Override
     public String toString() {
-        return "SinAlcohol{"+id+nombreProducto + '}';
+        return "SinAlcohol{ nombre: "+nombreProducto+"marca: "+nombreMarca+"unidad: "+
+                unidades+"mantener fresco? "+ conservarFresco+"fecha: "+fechaAdd+"precio: "+precioPorUnidad+"azucarada? "+azucarada+"}";
     }
+
+
+   
 }
