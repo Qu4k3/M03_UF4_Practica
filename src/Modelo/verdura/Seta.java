@@ -1,12 +1,12 @@
 package Modelo.verdura;
 
-import java.util.Date;
-
 public class Seta extends Verdura {
 
-    public Seta(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, Date fechaAdd, float precio) {
-        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd, precio);
+    public Seta(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd) {
+        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd);
     }
+
+
 
     @Override
     public double totalPrecio(int unidades) {

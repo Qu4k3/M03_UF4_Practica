@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Test;
 
 import Modelo.Producto;
@@ -13,10 +8,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-/**
- *
- * @author paulg
- */
 public class Main {
 
     /**
@@ -29,7 +20,7 @@ public class Main {
         }
         
         /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
-        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", 2, "qwqw");
+        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "qwqw", 1);
 
 
         oos.writeObject(vhe1);*/
