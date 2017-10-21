@@ -19,7 +19,7 @@ public class SinAlcohol extends Bebida{
    
 
      
-    
+    //imprimir datos
     @Override
     public String toString() {
         return "SinAlcohol{"+id+nombreProducto + '}';
