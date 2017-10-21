@@ -10,20 +10,15 @@ public class Hortaliza extends Verdura {
 
     }
 
-
-
-
-
     @Override
     public double totalPrecio(int unidades) {
-        return precioPorKilo*peso*unidades;
+        return precioPorKilo * peso * unidades;
     }
-    
-    
+
     @Override
     public String toString() {
         return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
-                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "precio: " + precioPorKilo + "adobado? " + preparadoParaCocido + "peso: " + peso + "}";
+                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "proveedor: " + proveedor + "precio: " + precioPorKilo + "adobado? " + preparadoParaCocido + "peso: " + peso + "}";
     }
-    
+
 }
