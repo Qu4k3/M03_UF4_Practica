@@ -1,16 +1,21 @@
 package Modelo.bebida;
 
-public class ConAlcohol extends Bebida{
-        private double precioPorUnidad;
+public class ConAlcohol extends Bebida {
 
-    public ConAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd, double precioPorUnidad) {
-        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd);
-        this.precioPorUnidad=this.precioPorUnidad;
+    public ConAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, double precioPorUnidad, String formato) {
+        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, formato);
+
     }
 
     @Override
     public double totalPrecio(int unidades) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return unidades * precioPorUnidad;
+    }
+
+    @Override
+    public String toString() {
+        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
+                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "precio: " + precioPorUnidad + "}";
     }
 
 }

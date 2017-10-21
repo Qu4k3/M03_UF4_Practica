@@ -1,11 +1,14 @@
 package Test;
 
 import Modelo.Producto;
+import Modelo.bebida.SinAlcohol;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Main {
@@ -20,17 +23,13 @@ public class Main {
         }
         
         /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
-        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "qwqw", 1);
-
+        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", 1,"lata",true);
+        
+        
 
         oos.writeObject(vhe1);*/
 
-        /*String nombreProducto;
-     String nombreMarca;
-    protected int unidades;
-    protected boolean mantenerFresco;
-    protected Date fechaAdd;
-    protected float precio;*/
+        //nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, azucarada;
         
 
     }

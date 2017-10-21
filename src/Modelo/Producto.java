@@ -13,12 +13,12 @@ public abstract class  Producto implements Serializable{
     protected String fechaAdd;
     final double IVA= 1.21;
 
-    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd) {
+    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd) {
         this.id = count.incrementAndGet();
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
         this.unidades = unidades;
-        this.conservarFresco = mantenerFresco;
+        this.conservarFresco = conservarFresco;
         this.fechaAdd = fechaAdd;
     }
 
