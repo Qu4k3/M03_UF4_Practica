@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- *
- * @author HangjieHuang
- */
 public abstract class  Producto implements Serializable{
     protected static final AtomicInteger count = new AtomicInteger();
     protected final int id;
     protected String nombreProducto;
     protected String nombreMarca;
     protected int unidades;
-    protected boolean mantenerFresco;
+    protected boolean conservarFresco;
     protected String fechaAdd;
     final double IVA= 1.21;
 
@@ -27,7 +18,7 @@ public abstract class  Producto implements Serializable{
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
         this.unidades = unidades;
-        this.mantenerFresco = mantenerFresco;
+        this.conservarFresco = mantenerFresco;
         this.fechaAdd = fechaAdd;
     }
 
@@ -47,8 +38,8 @@ public abstract class  Producto implements Serializable{
         return unidades;
     }
 
-    public boolean isMantenerFresco() {
-        return mantenerFresco;
+    public boolean isConservarFresco() {
+        return conservarFresco;
     }
 
     public String getFechaAdd() {
