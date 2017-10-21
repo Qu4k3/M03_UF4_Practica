@@ -11,15 +11,17 @@ public abstract class  Producto implements Serializable{
     protected int unidades;
     protected boolean conservarFresco;
     protected String fechaAdd;
+    protected String proveedor;
     final double IVA= 1.21;
 
-    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd) {
+    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor) {
         this.id = count.incrementAndGet();
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
         this.unidades = unidades;
         this.conservarFresco = conservarFresco;
         this.fechaAdd = fechaAdd;
+        this.proveedor=proveedor;
     }
 
     public int getId() {
@@ -46,10 +48,11 @@ public abstract class  Producto implements Serializable{
         return fechaAdd;
     }
 
-
-    public double getIVA() {
-        return IVA;
+    public String getProveedor() {
+        return proveedor;
     }
+
+
 
     public abstract double totalPrecio(int unidades);
 

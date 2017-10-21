@@ -2,9 +2,12 @@ package Modelo.verdura;
 
 public class Seta extends Verdura {
 
-    public Seta(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, double precioPorKilo, double peso, String origen) {
-        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorKilo, peso, origen);
+    public Seta(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, double peso, String origen) {
+        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen);
+        
     }
+
+
 
 
     @Override
@@ -15,7 +18,7 @@ public class Seta extends Verdura {
         @Override
     public String toString() {
         return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
-                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "precio: " + precioPorKilo + "peso: " + peso + "}";
+                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "proveedor: "+proveedor+"precio: " + precioPorKilo + "peso: " + peso + "}";
     }
     
 }
