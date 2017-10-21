@@ -5,25 +5,22 @@ import java.util.Scanner;
 public class Menus {
 
     static Scanner leerUsuario = new Scanner(System.in);
-    
-    public static void menuCargarDatos() {
-        
-    }
 
     public static void menuPrincipal() {
 
         int option;
         boolean salir = false;
+        
+        Scanner scanner = new Scanner(System.in);
 
         do {
             System.out.println(Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
-            System.out.println("1. Carga datos de inicio");
-            System.out.println("2. Añadir productos");
-            System.out.println("3. Ver/listar productos");
-            System.out.println("4. Editar productos");
-            System.out.println("5. Borrar datos");
-            System.out.println("6. Vender");
-            System.out.println("7. Salir");
+            System.out.println("1. Añadir productos");
+            System.out.println("2. Ver/listar productos");
+            System.out.println("3. Editar productos");
+            System.out.println("4. Borrar datos");
+            System.out.println("5. Vender");
+            System.out.println("6. Salir");
             System.out.println("\n" + Colors.ANSI_CYAN + "// Que desea realizar?\n" + Colors.ANSI_RESET);
             System.out.print(Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
 
@@ -31,9 +28,10 @@ public class Menus {
 
             switch (option) {
                 case 1:
-                    menuAddDatos();
+                    menuTipoProducto();
                     break;
                 case 2:
+                    
 
                     break;
                 case 3:
@@ -45,19 +43,29 @@ public class Menus {
 
                     break;
                 case 6:
+                    
+                    char secExit;
+                    Messages.exitSec();
+                    secExit = scanner.next().charAt(0);
 
-                    break;
-                case 7:
-                    salir = true;
+                    if (secExit == 's') {
+                        salir = true;
+                        break;
+                    } else {
+                        break;
+                    }
 
-                    break;
                 default:
-                    System.out.println("Introduce numero 1-7");
+                    System.out.println("Introduce numero 1-6");
                     break;
             }
 
-        } while (salir == false);
+        } while (salir != true);
 
+    }
+    
+    public static void menuTipoProducto() {
+        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir" + Colors.ANSI_RESET + "\n(1) Bebida con alcohol\n(2) Bebida sin alcohol\n");
     }
 
     public static void menuAddDatos() {

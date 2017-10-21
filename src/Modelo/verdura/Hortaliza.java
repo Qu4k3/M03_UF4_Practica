@@ -4,16 +4,26 @@ public class Hortaliza extends Verdura {
 
     private boolean preparadoParaCocido = false;
 
-    public Hortaliza(String nombreProducto, String nombreMarca, int unidades, boolean mantenerFresco, String fechaAdd, boolean preparadoParaCocido) {
-        super(nombreProducto, nombreMarca, unidades, mantenerFresco, fechaAdd);
+    public Hortaliza(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, double peso, String origen, boolean preparadoParaCocido) {
+        super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen);
         this.preparadoParaCocido = preparadoParaCocido;
+
     }
+
+
 
 
 
     @Override
     public double totalPrecio(int unidades) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return precioPorKilo*peso*unidades;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
+                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "precio: " + precioPorKilo + "adobado? " + preparadoParaCocido + "peso: " + peso + "}";
     }
     
 }
