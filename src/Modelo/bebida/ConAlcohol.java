@@ -13,8 +13,8 @@ public class ConAlcohol extends Bebida {
 
     @Override
     public String toString() {
-        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
-                + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "precio: " + precioPorUnidad + "}";
+        return "Bebida con alcohol{ nombre: " + nombreProducto + ";marca: " + nombreMarca + ";unidad: "
+                + unidades + ";mantener fresco? " + conservarFresco + ";fecha: " + fechaAdd + ";precio: " + precioPorUnidad + "}";
     }
 
 }
