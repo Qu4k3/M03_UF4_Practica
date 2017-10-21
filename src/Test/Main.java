@@ -25,7 +25,7 @@ public class Main {
 
         oos.writeObject(vhe1);*/
 
-        /*protected String nombreProducto;
+        /*String nombreProducto;
     protected String nombreMarca;
     protected int unidades;
     protected boolean mantenerFresco;
