@@ -29,7 +29,7 @@ public class Main {
         }
         
         /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
-        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", 2, "qwqw");
+        Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "qwqw", 1);
 
 
         oos.writeObject(vhe1);*/
