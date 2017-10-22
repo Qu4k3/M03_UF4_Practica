@@ -12,9 +12,10 @@ public abstract class  Producto implements Serializable{
     protected boolean conservarFresco;
     protected String fechaAdd;
     protected String proveedor;
+    protected double precio;
     protected final double IVA= 1.21;
 
-    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor) {
+    public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precio) {
         this.id = count.incrementAndGet();
         this.nombreProducto = nombreProducto;
         this.nombreMarca = nombreMarca;
@@ -22,6 +23,7 @@ public abstract class  Producto implements Serializable{
         this.conservarFresco = conservarFresco;
         this.fechaAdd = fechaAdd;
         this.proveedor=proveedor;
+        this.precio=precio;
     }
 
     public int getId() {
@@ -54,6 +56,14 @@ public abstract class  Producto implements Serializable{
 
     public void setUnidades(int unidades) {
         this.unidades = unidades;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
 

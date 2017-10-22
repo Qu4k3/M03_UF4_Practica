@@ -76,8 +76,73 @@ public class Funcions {
                 productos.remove(elem);
             }
         }
+    }
 
+    public static void editarCantidad(ArrayList<Producto> productos) throws IOException {
+        System.out.println("Que producto quieres etidar?");
+        String nombreProducto;
+        int cantidad;
+        boolean existe = true;
+        nombreProducto = br.readLine();
+        for (Producto elem : productos) {
+            if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
+                System.out.println(elem.toString());
+                System.out.println("Introduce la cantidad quieres aumentar");
+                cantidad = Integer.parseInt(br.readLine());
+                elem.setUnidades(elem.getUnidades() + cantidad);
+                System.out.println("cantidad aumentado");
+            } else {
+                existe = false;
+            }
+        }
+        if (existe == false) {
+            System.out.println("producto no existe");
+        }
+    }
 
+    public static void editarPrecio(ArrayList<Producto> productos) throws IOException {
+        System.out.println("Que producto quieres etidar?");
+        String nombreProducto;
+        double precio;
+        boolean existe = true;
+        nombreProducto = br.readLine();
+        for (Producto elem : productos) {
+            if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
+                System.out.println(elem.toString());
+                System.out.println("Introduce el precio");
+                precio = Double.parseDouble(br.readLine());
+                elem.setPrecio(precio);
+                System.out.println("precio editado");
+            } else {
+                existe = false;
+            }
+        }
+        if (existe == false) {
+            System.out.println("producto no existe");
+        }
+    }
+    
+    
+    public static void editarProveedor(ArrayList<Producto> productos) throws IOException {
+        System.out.println("Que producto quieres etidar?");
+        String nombreProducto,proveedor;
+        
+        boolean existe = true;
+        nombreProducto = br.readLine();
+        for (Producto elem : productos) {
+            if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
+                System.out.println(elem.toString());
+                System.out.println("Introduce el nombre de proveedor");
+                proveedor=br.readLine();
+                elem.setProveedor(proveedor);
+                System.out.println("proveedor editado");
+            } else {
+                existe = false;
+            }
+        }
+        if (existe == false) {
+            System.out.println("producto no existe");
+        }
     }
 
 }

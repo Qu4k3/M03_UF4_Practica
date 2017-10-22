@@ -101,7 +101,7 @@ public class Test {
                     menuListar(productos);
                     break;
                 case 3:
-                    //menuEditarDatos(productos);
+                    menuEditarDatos(productos);
                     break;
                 case 4:
                     menuBorrarDatos(productos);
@@ -240,7 +240,8 @@ public class Test {
 
     }
 
-    public static void menuEditarDatos(ArrayList<Producto> productos) {
+    public static void menuEditarDatos(ArrayList<Producto> productos) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int option;
         boolean salir = false;
@@ -254,14 +255,14 @@ public class Test {
 
             switch (option) {
                 case 1:
-
+                    Funcions.editarCantidad(productos);
                     break;
                 case 2:
-
+                    Funcions.editarPrecio(productos);
                     break;
 
                 case 3:
-
+                    Funcions.editarProveedor(productos);
                     break;
                 case 4:
                     salir = true;
