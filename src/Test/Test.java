@@ -30,11 +30,12 @@ public class Test {
     static Scanner leerUsuario = new Scanner(System.in);
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
+      /*
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
 
         Producto bebidaSinAlcohol = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "cocacola", 1, "lata", true);
         Producto bebidaConAlcohol = new ConAlcohol("vino blanco", "perro verde", 6, false, "15/12/2017", "vino perro", 5, "vidrio");
-        Producto carne = new Carne("Alitas de pollo", "Mercadona", 3, true, "15/12/2017", "proveedor-pollo", 1.2, false, 3.1);
+        Producto carne = new Carne("Pollo" , "Alitas de pollo", "Mercadona", 3, true, "15/12/2017", "proveedor-pollo", 1.2, false, 3.1);
         Producto verduraHortaliza = new Hortaliza("repollo", "repo-vetdura", 10, true, "15/12/2017", "proveedor-repo", 0.3, 0.8, "España", false);
         Producto verduraSeta = new Seta("mushrooms", "seta-vetdura", 12, true, "15/12/2017", "proveedor-seta", 0.3, 0.5, "España");
 
@@ -42,8 +43,8 @@ public class Test {
         oos.writeObject(bebidaConAlcohol);
         oos.writeObject(carne);
         oos.writeObject(verduraHortaliza);
-        oos.writeObject(verduraSeta);*/
-
+        oos.writeObject(verduraSeta);
+*/
 
  /*
             SinAlcohol
@@ -51,7 +52,7 @@ public class Test {
             ConAlcohol
             nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato
             Carne
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, adobado, peso;
+            animal, nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, adobado, peso;
             Hortaliza
             nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen, preparadoParaCocido;
             Seta
@@ -77,8 +78,6 @@ public class Test {
 
         int option;
         boolean salir = false;
-
-        Scanner scanner = new Scanner(System.in);
 
         do {
             System.out.println(Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
@@ -113,7 +112,7 @@ public class Test {
 
                     char secExit;
                     Messages.exitSec();
-                    secExit = scanner.next().charAt(0);
+                    secExit = leerUsuario.next().charAt(0);
 
                     if (secExit == 's') {
                         salir = true;
@@ -137,18 +136,28 @@ public class Test {
 
     public static void menuAddDatos(ArrayList<Producto> productos) {
 
-        int option, tipo;
+        int option;
         boolean salir = false;
 
         do {
-            System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir" 
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir"
                     + Colors.ANSI_RESET + "\n(1) Bebida con alcohol\n(2) Bebida sin alcohol\n");
             option = leerUsuario.nextInt();
 
             switch (option) {
                 case 1:
                     System.out.println("Formato\n-\n" + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio" + Colors.ANSI_RESET);
+                    String linea = leerUsuario.nextLine();
                     
+                    String[] str = linea.split(";");
+                    try {
+                        Producto v = new ConAlcohol(str[0], str[1], Integer.parseInt(str[2]), Boolean.parseBoolean(str[3]), str[4], str[5], Double.parseDouble(str[6]), str[7]);
+                        productos.add(v);
+                    } catch (Exception e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "No se ha añadido producto correctamente" + Colors.ANSI_RESET);
+                    }
+                    
+
                     break;
                 case 2:
 
