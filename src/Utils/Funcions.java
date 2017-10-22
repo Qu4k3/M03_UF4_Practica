@@ -1,11 +1,9 @@
 package Utils;
 
 import Modelo.Producto;
-import Modelo.bebida.ConAlcohol;
-import Modelo.bebida.SinAlcohol;
+import Modelo.bebida.*;
 import Modelo.carne.Carne;
-import Modelo.verdura.Hortaliza;
-import Modelo.verdura.Seta;
+import Modelo.verdura.*;
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -37,6 +35,10 @@ public class Funcions {
         return productos;
 
     }
+    
+    public static void getProducto(ArrayList<Producto> productos) {
+        
+    }
 
     public static void listarTotoProducto(ArrayList<Producto> productos) {
         for (Producto elem : productos) {
@@ -54,6 +56,7 @@ public class Funcions {
                 System.out.println(elem.toString());
             }
         }
+        br.close();
     }
 
     public static void listarPorProveedor(ArrayList<Producto> productos) throws IOException {
@@ -65,6 +68,7 @@ public class Funcions {
                 System.out.println(elem.toString());
             }
         }
+        br.close();
     }
 
     
