@@ -62,10 +62,11 @@ public class Test {
         if (productos.isEmpty()) {
             System.out.println("No se han cargado los datos correctamente");
         } else {
-            System.out.println("Datos cargados correctamente\n\nContenido:");
+            System.out.println(Colors.ANSI_GREEN_BACKGROUND + " Datos cargados correctamente " + Colors.ANSI_RESET + "\n\nContenido:\n-");
             for (Producto elem : productos) {
                 System.out.println(elem.toString());
             }
+            System.out.println("");
         }
 
         menuPrincipal(productos);
@@ -94,13 +95,13 @@ public class Test {
 
             switch (option) {
                 case 1:
-                    menuTipoProducto();
+                    menuAddDatos(productos);
                     break;
                 case 2:
                     menuListar(productos);
                     break;
                 case 3:
-
+                    //menuEditarDatos(productos);
                     break;
                 case 4:
                     menuBorrarDatos(productos);
@@ -134,23 +135,20 @@ public class Test {
 
     }
 
-    public static void menuTipoProducto() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir" + Colors.ANSI_RESET + "\n(1) Bebida con alcohol\n(2) Bebida sin alcohol\n");
-    }
-
     public static void menuAddDatos(ArrayList<Producto> productos) {
 
-        int option;
+        int option, tipo;
         boolean salir = false;
 
         do {
-            System.out.println("1. Añadir producto");
-            System.out.println("3. Volver");
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir" 
+                    + Colors.ANSI_RESET + "\n(1) Bebida con alcohol\n(2) Bebida sin alcohol\n");
             option = leerUsuario.nextInt();
 
             switch (option) {
                 case 1:
-
+                    System.out.println("Formato\n-\n" + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio" + Colors.ANSI_RESET);
+                    
                     break;
                 case 2:
 
@@ -262,7 +260,7 @@ public class Test {
 
                     break;
                 case 2:
-                    
+
                     Funcions.borrarPorproveedor(productos);
 
                     break;
