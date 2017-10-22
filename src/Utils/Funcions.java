@@ -1,6 +1,11 @@
 package Utils;
 
 import Modelo.Producto;
+import Modelo.bebida.ConAlcohol;
+import Modelo.bebida.SinAlcohol;
+import Modelo.carne.Carne;
+import Modelo.verdura.Hortaliza;
+import Modelo.verdura.Seta;
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -8,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Funcions {
 
@@ -48,7 +54,6 @@ public class Funcions {
                 System.out.println(elem.toString());
             }
         }
-
     }
 
     public static void listarPorProveedor(ArrayList<Producto> productos) throws IOException {
@@ -60,7 +65,29 @@ public class Funcions {
                 System.out.println(elem.toString());
             }
         }
-
     }
+
+    
+    public static void borrarPorproveedor(ArrayList<Producto> productos) throws IOException {
+       /* String opt;
+        System.out.println("De qué proveedor quieres borrar? ");
+        opt = br.readLine();
+        for (Producto elem : productos) {
+            if (elem.getProveedor().equalsIgnoreCase(opt)) {
+                productos.removeAll(productos);
+            }
+        }*/
+       
+        for (Producto elem:productos) {
+            if (elem instanceof Carne) {
+                productos.removeAll(productos);
+            }
+        }
+            
+        }
+    
+
+
+
 
 }

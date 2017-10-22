@@ -1,7 +1,11 @@
 package Test;
 
-
 import Modelo.Producto;
+import Modelo.bebida.ConAlcohol;
+import Modelo.bebida.SinAlcohol;
+import Modelo.carne.Carne;
+import Modelo.verdura.Hortaliza;
+import Modelo.verdura.Seta;
 import Utils.Colors;
 import Utils.Funcions;
 
@@ -23,23 +27,38 @@ public class Test {
     /**
      * @param args the command line arguments
      */
-        static Scanner leerUsuario = new Scanner(System.in);
+    static Scanner leerUsuario = new Scanner(System.in);
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-            /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
+        /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
 
-            Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017","cocacola", 1,"lata",true);
+        Producto bebidaSinAlcohol = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "cocacola", 1, "lata", true);
+        Producto bebidaConAlcohol = new ConAlcohol("vino blanco", "perro verde", 6, false, "15/12/2017", "vino perro", 5, "vidrio");
+        Producto carne = new Carne("Alitas de pollo", "Mercadona", 3, true, "15/12/2017", "proveedor-pollo", 1.2, false, 3.1);
+        Producto verduraHortaliza = new Hortaliza("repollo", "repo-vetdura", 10, true, "15/12/2017", "proveedor-repo", 0.3, 0.8, "España", false);
+        Producto verduraSeta = new Seta("mushrooms", "seta-vetdura", 12, true, "15/12/2017", "proveedor-seta", 0.3, 0.5, "España");
+
+        oos.writeObject(bebidaSinAlcohol);
+        oos.writeObject(bebidaConAlcohol);
+        oos.writeObject(carne);
+        oos.writeObject(verduraHortaliza);
+        oos.writeObject(verduraSeta);*/
 
 
-            oos.writeObject(vhe1);*/
-
-            /*
+ /*
             SinAlcohol
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, azucarada;
-            */
-        
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato, azucarada;
+            ConAlcohol
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato
+            Carne
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, adobado, peso;
+            Hortaliza
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen, preparadoParaCocido;
+            Seta
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen
+         */
         ArrayList<Producto> productos = Funcions.addProductosDesdeArchivo();
-        
+
         if (productos.isEmpty()) {
             System.out.println("No se han cargado los datos correctamente");
         } else {
@@ -48,16 +67,16 @@ public class Test {
                 System.out.println(elem.toString());
             }
         }
-        
+
         menuPrincipal(productos);
 
     }
-    
-        public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
+
+    public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
 
         int option;
         boolean salir = false;
-        
+
         Scanner scanner = new Scanner(System.in);
 
         do {
@@ -81,15 +100,16 @@ public class Test {
                     menuListar(productos);
                     break;
                 case 3:
-                    
+
                     break;
                 case 4:
+                    menuBorrarDatos(productos);
                     break;
                 case 5:
 
                     break;
                 case 6:
-                    
+
                     char secExit;
                     Messages.exitSec();
                     secExit = scanner.next().charAt(0);
@@ -100,7 +120,11 @@ public class Test {
                     } else {
                         break;
                     }
-
+                case 7:
+                    for (Producto elem : productos) {
+                        System.out.println(elem.toString());
+                    }
+                    break;
                 default:
                     System.out.println("Introduce numero 1-6");
                     break;
@@ -109,12 +133,12 @@ public class Test {
         } while (salir != true);
 
     }
-    
+
     public static void menuTipoProducto() {
         System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir" + Colors.ANSI_RESET + "\n(1) Bebida con alcohol\n(2) Bebida sin alcohol\n");
     }
 
-    public static void menuAddDatos() {
+    public static void menuAddDatos(ArrayList<Producto> productos) {
 
         int option;
         boolean salir = false;
@@ -159,14 +183,14 @@ public class Test {
             switch (option) {
                 case 1:
                     Funcions.listarTotoProducto(productos);
-                           
+
                     break;
                 case 2:
                     Funcions.listarPorTipoProducto(productos);
                     break;
 
                 case 3:
-
+                    Funcions.listarPorProveedor(productos);
                     break;
                 case 4:
                     salir = true;
@@ -181,7 +205,7 @@ public class Test {
 
     }
 
-    public static void menuEditarDatos() {
+    public static void menuEditarDatos(ArrayList<Producto> productos) {
 
         int option;
         boolean salir = false;
@@ -217,43 +241,41 @@ public class Test {
 
     }
 
-    public static void menuBorrarDatos() {
+    public static void menuBorrarDatos(ArrayList<Producto> productos) throws IOException {
 
-        int option;
+        int opt;
         boolean salir = false;
 
         do {
-            System.out.println("1. Borrar todos los productos");
-            System.out.println("2. Borrar por tipo de producto");
-            System.out.println("3. Salir");
-            option = leerUsuario.nextInt();
 
-            switch (option) {
+            System.out.println("1. Borrar todos los productos");
+            System.out.println("2. Borrar por proveedor");
+            System.out.println("3. Salir");
+            opt = leerUsuario.nextInt();
+
+            switch (opt) {
                 case 1:
+                    productos.removeAll(productos);
+                    if (productos.isEmpty()) {
+                        System.out.println("Borrado todos productos");
+                    }
 
                     break;
                 case 2:
+                    
+                    Funcions.borrarPorproveedor(productos);
 
                     break;
-
                 case 3:
-
-                    break;
-                case 4:
-
-                    break;
-                case 5:
                     salir = true;
                     break;
                 default:
-                    System.out.println("Introduce numero 1-4");
+                    System.out.println("Introduce numero 1-3");
                     break;
             }
 
         } while (salir == false);
-        
-    }
-    
 
+    }
 
 }

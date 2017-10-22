@@ -17,7 +17,7 @@ public class Seta extends Verdura {
     
         @Override
     public String toString() {
-        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
+        return "Seta{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
                 + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "proveedor: "+proveedor+"precio: " + precioPorKilo + "peso: " + peso + "}";
     }
     

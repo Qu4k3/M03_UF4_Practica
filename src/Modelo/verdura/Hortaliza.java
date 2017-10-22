@@ -17,7 +17,7 @@ public class Hortaliza extends Verdura {
 
     @Override
     public String toString() {
-        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
+        return "Hortaliza{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
                 + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "proveedor: " + proveedor + "precio: " + precioPorKilo + "adobado? " + preparadoParaCocido + "peso: " + peso + "}";
     }
 
