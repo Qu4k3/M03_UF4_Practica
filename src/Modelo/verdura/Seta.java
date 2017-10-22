@@ -11,7 +11,7 @@ public class Seta extends Verdura {
 
     @Override
     public double totalPrecio(int unidades) {
-        return precioPorKilo * unidades;
+        return precioPorKilo * unidades*IVA;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class SinAlcohol extends Bebida{
 
     @Override
     public double totalPrecio(int unidades) {
-        return unidades*precioPorUnidad;
+        return unidades*precioPorUnidad*IVA;
             }
 
     @Override

@@ -14,7 +14,7 @@ public class Hortaliza extends Verdura {
 
     @Override
     public double totalPrecio(int unidades) {
-        return precioPorKilo * peso * unidades;
+        return precioPorKilo * peso * unidades*IVA;
     }
 
     @Override

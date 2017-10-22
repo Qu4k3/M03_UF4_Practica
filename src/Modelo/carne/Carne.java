@@ -22,7 +22,7 @@ public class Carne extends Producto {
 
     @Override
     public double totalPrecio(int unidades) {
-        return precioPorKilo * peso * unidades;
+        return precioPorKilo * peso * unidades*IVA;
     }
 
     @Override
