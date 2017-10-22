@@ -22,7 +22,7 @@ public class Carne extends Producto {
     
         @Override
     public String toString() {
-        return "SinAlcohol{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
+        return "Carne{ nombre: " + nombreProducto + "marca: " + nombreMarca + "unidad: "
                 + unidades + "mantener fresco? " + conservarFresco + "fecha: " + fechaAdd + "proveedor: "+proveedor+"precio: " + precioPorKilo + "adobado? "+adobado+"peso: "+peso+"}";
     }
     
