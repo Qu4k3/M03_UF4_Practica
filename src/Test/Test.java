@@ -1,12 +1,59 @@
-package Utils;
+package Test;
 
+
+import Modelo.Producto;
+import Utils.Colors;
+import Utils.Funcions;
+
+import Utils.Messages;
+import java.io.BufferedReader;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menus {
+public class Test {
 
-    static Scanner leerUsuario = new Scanner(System.in);
+    /**
+     * @param args the command line arguments
+     */
+        static Scanner leerUsuario = new Scanner(System.in);
 
-    public static void menuPrincipal() {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+            /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
+
+            Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017","cocacola", 1,"lata",true);
+
+
+            oos.writeObject(vhe1);*/
+
+            /*
+            SinAlcohol
+            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, azucarada;
+            */
+        
+        ArrayList<Producto> productos = Funcions.addProductosDesdeArchivo();
+        
+        if (productos.isEmpty()) {
+            System.out.println("No se han cargado los datos correctamente");
+        } else {
+            System.out.println("Datos cargados correctamente\n\nContenido:");
+            for (Producto elem : productos) {
+                System.out.println(elem.toString());
+            }
+        }
+        
+        menuPrincipal(productos);
+
+    }
+    
+        public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
 
         int option;
         boolean salir = false;
@@ -31,11 +78,10 @@ public class Menus {
                     menuTipoProducto();
                     break;
                 case 2:
-                    
-
+                    menuListar(productos);
                     break;
                 case 3:
-
+                    
                     break;
                 case 4:
                     break;
@@ -99,8 +145,7 @@ public class Menus {
 
     }
 
-    public static void menuListar() {
-
+    public static void menuListar(ArrayList<Producto> productos) throws IOException {
         int option;
         boolean salir = false;
 
@@ -113,10 +158,11 @@ public class Menus {
 
             switch (option) {
                 case 1:
-
+                    Funcions.listarTotoProducto(productos);
+                           
                     break;
                 case 2:
-
+                    Funcions.listarPorTipoProducto(productos);
                     break;
 
                 case 3:
@@ -208,5 +254,6 @@ public class Menus {
         
     }
     
-    
+
+
 }
