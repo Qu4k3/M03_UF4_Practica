@@ -9,14 +9,16 @@ public class Carne extends Producto {
     private boolean adobado = false;  // por defecto false
     private double peso;  // en kiloGramos
     private String animal;
-
-    public Carne(String animal, String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, boolean adobado, double peso) {
+  
+    public Carne( String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, boolean adobado, double peso, String animal) {
         super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor);
         this.precioPorKilo = precioPorKilo;
         this.adobado = adobado;
         this.peso = peso;
         this.animal = animal;
     }
+   
+
 
     @Override
     public double totalPrecio(int unidades) {
