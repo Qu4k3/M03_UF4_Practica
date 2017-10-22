@@ -35,10 +35,6 @@ public class Funcions {
         return productos;
 
     }
-    
-    public static void getProducto(ArrayList<Producto> productos) {
-        
-    }
 
     public static void listarTotoProducto(ArrayList<Producto> productos) {
         for (Producto elem : productos) {
@@ -71,9 +67,8 @@ public class Funcions {
         br.close();
     }
 
-    
     public static void borrarPorproveedor(ArrayList<Producto> productos) throws IOException {
-       /* String opt;
+        /* String opt;
         System.out.println("De qué proveedor quieres borrar? ");
         opt = br.readLine();
         for (Producto elem : productos) {
@@ -81,17 +76,13 @@ public class Funcions {
                 productos.removeAll(productos);
             }
         }*/
-       
-        for (Producto elem:productos) {
+
+        for (Producto elem : productos) {
             if (elem instanceof Carne) {
                 productos.removeAll(productos);
             }
         }
-            
-        }
-    
 
-
-
+    }
 
 }
