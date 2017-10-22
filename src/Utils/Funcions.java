@@ -68,20 +68,15 @@ public class Funcions {
     }
 
     public static void borrarPorproveedor(ArrayList<Producto> productos) throws IOException {
-        /* String opt;
+        String opt;
         System.out.println("De qué proveedor quieres borrar? ");
         opt = br.readLine();
         for (Producto elem : productos) {
             if (elem.getProveedor().equalsIgnoreCase(opt)) {
-                productos.removeAll(productos);
-            }
-        }*/
-
-        for (Producto elem : productos) {
-            if (elem instanceof Carne) {
-                productos.removeAll(productos);
+                productos.remove(elem);
             }
         }
+
 
     }
 

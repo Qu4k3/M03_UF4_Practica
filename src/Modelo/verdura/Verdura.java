@@ -1,8 +1,9 @@
 package Modelo.verdura;
 
 import Modelo.Producto;
+import java.io.Serializable;
 
-public abstract class Verdura extends Producto {
+public abstract class Verdura extends Producto implements Serializable{
 
     protected double precioPorKilo;
     protected double peso;

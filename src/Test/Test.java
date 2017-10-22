@@ -35,7 +35,8 @@ public class Test {
 
         Producto bebidaSinAlcohol = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "cocacola", 1, "lata", true);
         Producto bebidaConAlcohol = new ConAlcohol("vino blanco", "perro verde", 6, false, "15/12/2017", "vino perro", 5, "vidrio");
-        Producto carne = new Carne("Pollo" , "Alitas de pollo", "Mercadona", 3, true, "15/12/2017", "proveedor-pollo", 1.2, false, 3.1);
+        Producto carne = new Carne( "Alitas de pollo", "Mercadona", 3, true, "15/12/2017", "proveedor-pollo", 1.2, false, 3.1,"pollo");
+
         Producto verduraHortaliza = new Hortaliza("repollo", "repo-vetdura", 10, true, "15/12/2017", "proveedor-repo", 0.3, 0.8, "España", false);
         Producto verduraSeta = new Seta("mushrooms", "seta-vetdura", 12, true, "15/12/2017", "proveedor-seta", 0.3, 0.5, "España");
 
@@ -269,7 +270,7 @@ public class Test {
 
                     break;
                 case 2:
-
+                    //ERROR: solo funcion con proveedor-repo
                     Funcions.borrarPorproveedor(productos);
 
                     break;
