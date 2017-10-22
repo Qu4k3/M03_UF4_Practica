@@ -27,21 +27,6 @@ public class Funcions {
             return productos;
 
 
-            /*ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
-
-            Producto vhe1 = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", 1,"lata",true);
-
-
-            oos.writeObject(vhe1);*/
-
-            /*
-            SinAlcohol
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, precioPorUnidad, azucarada;
-
-
-
-            */
-
         }
 
     
