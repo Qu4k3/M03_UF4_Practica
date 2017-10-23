@@ -2,9 +2,14 @@ package Utils;
 
 public class Messages {
     
+    // --- Input ---
+    public static void inputData() {
+        System.out.print("\n" + Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
+    }
+    
     // --- General ---
     public static void error() {
-        System.out.println("\n> " + Colors.ANSI_RED + "Algo ha sucedido" + Colors.ANSI_RESET);
+        System.out.println("\n" + Colors.ANSI_RED + "> Ha habido un error" + Colors.ANSI_RESET);
     }
     
     public static void success() {
@@ -45,6 +50,9 @@ public class Messages {
         System.out.println("\n" + Colors.ANSI_PURPLE_BACKGROUND + " Seguro quieres salir? (s/n) " + Colors.ANSI_RESET);
     }
     
+    public static void deleteSec() {
+        System.out.println("\n" + Colors.ANSI_PURPLE_BACKGROUND + " Seguro quieres borrar todo? (s/n) " + Colors.ANSI_RESET);
+    }
     
     // --- Menu ---
     public static void optionNotFound() {
