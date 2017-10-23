@@ -20,6 +20,7 @@ import java.io.ObjectOutputStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class Test {
 
@@ -32,7 +33,7 @@ public class Test {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         // Código de testing para añadir contenido en el fichero
-        /*
+    /*
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
 
         Producto bebidaSinAlcohol = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "cocacola", 1, "lata", true);
@@ -47,7 +48,7 @@ public class Test {
         oos.writeObject(carne);
         oos.writeObject(verduraHortaliza);
         oos.writeObject(verduraSeta);
-         */
+    */
 
  /*
         SinAlcohol
@@ -297,6 +298,7 @@ public class Test {
 
                 if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {                    
                     contiene = true;
+                    
                     System.out.println("\n" + Colors.ANSI_CYAN + "// Cuantos quieres comprar ?" + Colors.ANSI_RESET);
                     Messages.inputData();
                     candidad = Integer.parseInt(br.readLine());
@@ -317,33 +319,33 @@ public class Test {
                         switch (mas) {
                             case "s":
                                 quieroMas = true;
+                                
                                 break;
                             case "n":
                                 quieroMas = false;
-
-                                System.out.println("\nCoste total: " + Colors.ANSI_PURPLE_BACKGROUND + " " + precioFinal + " " + Colors.ANSI_RESET);
+                                
+                                double roundOff = (double) Math.round(precioFinal * 100) / 100;
+                                System.out.println("\nCoste total: " + Colors.ANSI_PURPLE_BACKGROUND + " " + roundOff + " " + Colors.ANSI_RESET);
 
                                 break;
                             default:
                                 System.out.println(Colors.ANSI_RED + "\nIngresa letra s/n" + Colors.ANSI_RESET);
+                                
                                 break;
-
-                        }
-                        
+                        }                        
       
                     } else if (elem.getUnidades() < candidad) {
                         System.out.println("\nNo existen tantas existencias del producto solicitado, stock: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET + " pedido: " + Colors.ANSI_RED + candidad + Colors.ANSI_RESET);
                     }
-
                 }
-
             }
 
             if (contiene == false) {
                 System.out.println("\n" + Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
             }
+            
             contiene = false;
+            
         } while (quieroMas != false);
     }
-
 }

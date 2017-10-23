@@ -1,16 +1,16 @@
 package Utils;
 
 public final class Colors {
-    
+
     // Default
     public static final String ANSI_RESET = "\u001B[0m";
-    
+
     // Text weight styles
     public static final String F_BOLD = "\u001B[1m";
     public static final String F_LIGHT = "\u001B[2m";
-        // public static final String F_BOLD = "\033[0;1m";
-        // public static final String F_NORMAL = "\033[0;0m";    
-    
+    // public static final String F_BOLD = "\033[0;1m";
+    // public static final String F_NORMAL = "\033[0;0m";    
+
     // Text styles
     public static final String ITALIC = "\u001B[3m";
     public static final String UNDERLINE = "\u001B[4m";
@@ -38,8 +38,8 @@ public final class Colors {
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    
-        
+
     // disable automatic constructor
-    private Colors() {}     
+    private Colors() {
+    }
 }
