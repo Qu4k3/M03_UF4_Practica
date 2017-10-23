@@ -232,8 +232,7 @@ public class Funcions {
                 Messages.inputData();
                 cantidad = Integer.parseInt(br.readLine());
                 
-                // elem.getUnidades() + cantidad
-                elem.setUnidades(cantidad);
+                elem.setUnidades(elem.getUnidades() + cantidad);
                 
                 System.out.println("\nNuevo sotck: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET);
             } 
