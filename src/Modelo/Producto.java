@@ -66,6 +66,10 @@ public abstract class  Producto implements Serializable{
         this.precio = precio;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
 
 
     public abstract double totalPrecio(int unidades);

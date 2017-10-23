@@ -262,7 +262,7 @@ public class Funcions {
                 Messages.inputData();
                 precio = Double.parseDouble(br.readLine());
                 elem.setPrecio(precio);
-                System.out.println("\nPrecio editado correctamente");
+                System.out.println("\nPrecio editado correctamente "+elem.getPrecio());
             } 
         }
         if (existe == false) {
