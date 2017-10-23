@@ -10,7 +10,7 @@ public class ConAlcohol extends Bebida {
 
     @Override
     public double totalPrecio(int unidades) {
-        return unidades * precio*IVA;
+        return unidades * precio * IVA;
     }
 
     @Override

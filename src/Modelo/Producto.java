@@ -3,7 +3,8 @@ package Modelo;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class  Producto implements Serializable{
+public abstract class Producto implements Serializable {
+
     protected static final AtomicInteger count = new AtomicInteger();
     protected final int id;
     protected String nombreProducto;
@@ -13,7 +14,7 @@ public abstract class  Producto implements Serializable{
     protected String fechaAdd;
     protected String proveedor;
     protected double precio;
-    protected final double IVA= 1.21;
+    protected final double IVA = 1.21;
 
     public Producto(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precio) {
         this.id = count.incrementAndGet();
@@ -22,8 +23,8 @@ public abstract class  Producto implements Serializable{
         this.unidades = unidades;
         this.conservarFresco = conservarFresco;
         this.fechaAdd = fechaAdd;
-        this.proveedor=proveedor;
-        this.precio=precio;
+        this.proveedor = proveedor;
+        this.precio = precio;
     }
 
     public int getId() {
@@ -66,9 +67,10 @@ public abstract class  Producto implements Serializable{
         this.precio = precio;
     }
 
-
+    public double getPrecio() {
+        return precio;
+    }
 
     public abstract double totalPrecio(int unidades);
 
-    
 }

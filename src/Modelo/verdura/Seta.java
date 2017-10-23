@@ -11,14 +11,14 @@ public class Seta extends Verdura {
 
     @Override
     public double totalPrecio(int unidades) {
-        return precio * unidades*IVA;
+        return precio * unidades * IVA;
     }
 
     @Override
     public String toString() {
-        return "Verdura/Seta { nombre: " + Colors.ANSI_YELLOW + nombreProducto + Colors.ANSI_RESET + "; marca: " + Colors.ANSI_YELLOW + nombreMarca + Colors.ANSI_RESET + "; unidades: " 
+        return "Verdura/Seta { nombre: " + Colors.ANSI_YELLOW + nombreProducto + Colors.ANSI_RESET + "; marca: " + Colors.ANSI_YELLOW + nombreMarca + Colors.ANSI_RESET + "; unidades: "
                 + Colors.ANSI_YELLOW + unidades + Colors.ANSI_RESET + "; mantener fresco? " + Colors.ANSI_YELLOW + conservarFresco + Colors.ANSI_RESET + "; fecha: "
-                + Colors.ANSI_YELLOW + fechaAdd + Colors.ANSI_RESET + "; proveedor: " + Colors.ANSI_YELLOW + proveedor + Colors.ANSI_RESET + "; precio: " 
+                + Colors.ANSI_YELLOW + fechaAdd + Colors.ANSI_RESET + "; proveedor: " + Colors.ANSI_YELLOW + proveedor + Colors.ANSI_RESET + "; precio: "
                 + Colors.ANSI_YELLOW + precio + Colors.ANSI_RESET + "; peso: " + Colors.ANSI_YELLOW + peso + Colors.ANSI_RESET + " }";
     }
 
