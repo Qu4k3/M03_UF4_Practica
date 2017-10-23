@@ -13,10 +13,11 @@ import Utils.Messages;
 import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.ArrayList;
@@ -28,8 +29,11 @@ public class Test {
      * @param args the command line arguments
      */
     static Scanner leerUsuario = new Scanner(System.in);
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+
+        // Código de testing para añadir contenido en el fichero
         /*
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
 
@@ -48,16 +52,16 @@ public class Test {
          */
 
  /*
-            SinAlcohol
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato, azucarada;
-            ConAlcohol
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato
-            Carne
-            animal, nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, adobado, peso;
-            Hortaliza
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen, preparadoParaCocido;
-            Seta
-            nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen
+        SinAlcohol
+        nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato, azucarada;
+        ConAlcohol
+        nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorUnidad, formato
+        Carne
+        animal, nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, adobado, peso;
+        Hortaliza
+        nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen, preparadoParaCocido;
+        Seta
+        nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen
          */
         ArrayList<Producto> productos = Funcions.addProductosDesdeArchivo();
 
@@ -68,11 +72,11 @@ public class Test {
             for (Producto elem : productos) {
                 System.out.println(elem.toString());
             }
-            System.out.println("");
         }
 
         menuPrincipal(productos);
 
+        br.close();
     }
 
     public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
@@ -81,7 +85,7 @@ public class Test {
         boolean salir = false;
 
         do {
-            System.out.println(Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
+            System.out.println("\n" + Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
             System.out.println("1. Añadir productos");
             System.out.println("2. Ver/listar productos");
             System.out.println("3. Editar productos");
@@ -121,11 +125,11 @@ public class Test {
                     } else {
                         break;
                     }
-                case 7:
+                /*case 7:
                     for (Producto elem : productos) {
                         System.out.println(elem.toString());
                     }
-                    break;
+                    break;*/
                 default:
                     System.out.println("Introduce numero 1-6");
                     break;
@@ -136,71 +140,13 @@ public class Test {
     }
 
     public static void menuAddDatos(ArrayList<Producto> productos) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            Funcions.addDatos(productos);
+        } catch (Exception e) {
+            System.out.println("\n" + Colors.ANSI_RED + "> Ha habido un error al intentar añadir datos" + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_RED + "> Verifica que lo has escrito en el formato correcto" + Colors.ANSI_RESET + "\n");
 
-        int option;
-        boolean salir = false;
-
-        do {
-            System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir"
-                    + Colors.ANSI_RESET + "\n(1) Bebida sin alcohol\n(2) Bebida con alcohol\n(3) Carne\n(4) Verdura hortaliza\n(5) Verdura seta");
-            option = leerUsuario.nextInt();
-            switch (option) {
-                case 1:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato;azucarada" + Colors.ANSI_RESET);
-                    String linea = br.readLine();
-                    String[] str = linea.split(";");
-
-                    Producto p = new SinAlcohol(str[0], str[1], Integer.parseInt(str[2]), Boolean.parseBoolean(str[3]), str[4], str[5], Double.parseDouble(str[6]), str[7], Boolean.parseBoolean(str[8]));
-                    productos.add(p);
-                    System.out.println("Añadido con éxito");
-
-                    break;
-                case 2:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato" + Colors.ANSI_RESET);
-                    String conAlcohol = br.readLine();
-                    String[] strConAlcohol = conAlcohol.split(";");
-                    Producto productoConAlcohol = new ConAlcohol(strConAlcohol[0], strConAlcohol[1], Integer.parseInt(strConAlcohol[2]), Boolean.parseBoolean(strConAlcohol[3]), strConAlcohol[4], strConAlcohol[5], Double.parseDouble(strConAlcohol[6]), strConAlcohol[7]);
-                    productos.add(productoConAlcohol);
-                    System.out.println("Añadido con éxito");
-                    break;
-
-                case 3:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;adobado? ;peso; animal" + Colors.ANSI_RESET);
-                    String carne = br.readLine();
-                    String[] strCarne = carne.split(";");
-                    // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, boolean adobado, double peso, String animal
-                    Producto productoCarne = new Carne(strCarne[0], strCarne[1], Integer.parseInt(strCarne[2]), Boolean.parseBoolean(strCarne[3]), strCarne[4], strCarne[5], Double.parseDouble(strCarne[6]), Boolean.parseBoolean(strCarne[7]), Double.parseDouble(strCarne[8]), strCarne[9]);
-                    productos.add(productoCarne);
-                    System.out.println("Añadido con éxito");
-                    break;
-                case 4:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen; preparadoParaCocido" + Colors.ANSI_RESET);
-                    String hortaliza = br.readLine();
-                    String[] strHortaliza = hortaliza.split(";");
-                    // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, double peso, String origen, boolean preparadoParaCocido
-                    Producto productoHortaliza = new Hortaliza(strHortaliza[0], strHortaliza[1], Integer.parseInt(strHortaliza[2]), Boolean.parseBoolean(strHortaliza[3]), strHortaliza[4], strHortaliza[5], Double.parseDouble(strHortaliza[6]), Double.parseDouble(strHortaliza[7]), strHortaliza[8], Boolean.parseBoolean(strHortaliza[9]));
-                    productos.add(productoHortaliza);
-                    System.out.println("Añadido con éxito");
-                    break;
-                case 5:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen" + Colors.ANSI_RESET);
-                    String seta = br.readLine();
-                    String[] strSeta = seta.split(";");
-                    // nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen 
-                    Producto productoSeta = new Seta(strSeta[0], strSeta[1], Integer.parseInt(strSeta[2]), Boolean.parseBoolean(strSeta[3]), strSeta[4], strSeta[5], Double.parseDouble(strSeta[6]), Double.parseDouble(strSeta[7]), strSeta[8]);
-                    productos.add(productoSeta);
-                    System.out.println("Añadido con éxito");
-                    break;
-                case 6:
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("Introduce numero 1-3");
-                    break;
-            }
-
-        } while (salir == false);
+        }
 
     }
 
@@ -209,30 +155,30 @@ public class Test {
         boolean salir = false;
 
         do {
+            System.out.println("\n" + Colors.ANSI_PURPLE + "-------VER/LISTAR-------" + Colors.ANSI_RESET);
             System.out.println("1. Listar todos los producto");
             System.out.println("2. listar por tipo");
             System.out.println("3. listar por proveedor");
             System.out.println("4. Volver");
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Que desea realizar?\n" + Colors.ANSI_RESET);
+            System.out.print(Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
             option = leerUsuario.nextInt();
 
             switch (option) {
                 case 1:
-                    Funcions.listarTotoProducto(productos);
-
+                    Funcions.listarTodoProducto(productos);
                     break;
                 case 2:
                     Funcions.listarPorTipoProducto(productos);
                     break;
-
                 case 3:
                     Funcions.listarPorProveedor(productos);
                     break;
                 case 4:
                     salir = true;
-
                     break;
                 default:
-                    System.out.println("Introduce numero 1-4");
+                    System.out.println("\n" + Colors.ANSI_RED + "Introduce numero 1-4" + Colors.ANSI_RESET);
                     break;
             }
 
@@ -241,16 +187,18 @@ public class Test {
     }
 
     public static void menuEditarDatos(ArrayList<Producto> productos) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int option;
         boolean salir = false;
 
         do {
-            System.out.println("1. Editar candidad de producto");
+            System.out.println("\n" + Colors.ANSI_PURPLE + "--------EDITAR--------" + Colors.ANSI_RESET);
+            System.out.println("1. Editar stock de producto");
             System.out.println("2. Editar precio del producto");
             System.out.println("3. Editar proveedor");
             System.out.println("4. Volver");
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Que desea realizar?\n" + Colors.ANSI_RESET);
+            System.out.print(Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
             option = leerUsuario.nextInt();
 
             switch (option) {
@@ -260,13 +208,11 @@ public class Test {
                 case 2:
                     Funcions.editarPrecio(productos);
                     break;
-
                 case 3:
                     Funcions.editarProveedor(productos);
                     break;
                 case 4:
                     salir = true;
-
                     break;
                 default:
                     System.out.println("Introduce numero 1-4");
@@ -283,26 +229,41 @@ public class Test {
         boolean salir = false;
 
         do {
-
+            System.out.println("\n" + Colors.ANSI_PURPLE + "--------BORRAR--------" + Colors.ANSI_RESET);
             System.out.println("1. Borrar todos los productos");
-            System.out.println("2. Borrar por proveedor");
-            System.out.println("3. Salir");
+            System.out.println("2. Borrar todos los productos de proveedor");
+            System.out.println("3. Borrar producto por nombre");
+            System.out.println("4. Volver");
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Que desea realizar?\n" + Colors.ANSI_RESET);
+            System.out.print(Colors.ANSI_PURPLE + "> " + Colors.ANSI_RESET);
             opt = leerUsuario.nextInt();
 
             switch (opt) {
                 case 1:
-                    productos.removeAll(productos);
-                    if (productos.isEmpty()) {
-                        System.out.println("Borrado todos productos");
+                    char secDelete;
+                    Messages.deleteSec();
+                    Messages.inputData();
+                    secDelete = leerUsuario.next().charAt(0);
+
+                    if (secDelete == 's') {
+                        productos.removeAll(productos);
+                        if (productos.isEmpty()) {
+                            System.out.println("\n" + Colors.ANSI_BLUE_BACKGROUND + " Se han borrado todos los productos " + Colors.ANSI_RESET);
+                        }
+                    } else {
+                        break;
                     }
 
                     break;
                 case 2:
-                    //ERROR: solo funcion con proveedor-repo
-                    Funcions.borrarPorproveedor(productos);
+                    Funcions.borrarPorProveedor(productos);
 
                     break;
                 case 3:
+                    Funcions.borrarPorNombre(productos);
+
+                    break;
+                case 4:
                     salir = true;
                     break;
                 default:
@@ -315,32 +276,43 @@ public class Test {
     }
 
     public static void menuVender(ArrayList<Producto> productos) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int candidad;
         double precioFinal = 0;
+        boolean contiene = false;
         boolean existe = true, quieroMas = true;
         String nombre, mas = null;
+        System.out.println("\nContenido:\n-");
         for (Producto elem : productos) {
             System.out.println(elem.toString());
         }
-        for (int i = 0; i < productos.size() && quieroMas == true; i++) {
-            System.out.println("Introduce la nombre del producto.");
+
+        do {
+
+            System.out.println("\n" + Colors.ANSI_CYAN + "// Introduce nombre del producto" + Colors.ANSI_RESET);
+            Messages.inputData();
             nombre = br.readLine();
 
             for (Producto elem : productos) {
 
                 if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {
                     existe = true;
-                    System.out.println("Introduce cantidad de comprar");
+                    contiene = true;
+                    System.out.println("\n" + Colors.ANSI_CYAN + "// Cuantos quieres comprar ?" + Colors.ANSI_RESET);
+                    Messages.inputData();
                     candidad = Integer.parseInt(br.readLine());
+
                     if (candidad <= 0) {
-                        System.out.println("El cantidad de comprar tiene que mayor que 0");
+                        System.out.println("\n" + Colors.ANSI_RED + "Solo se pueden ingresar cantidades positivas superiores a 0" + Colors.ANSI_RESET);
                     } else if (elem.getUnidades() >= candidad) {
                         elem.setUnidades(elem.getUnidades() - candidad);
-                        System.out.println("El precio es: " + elem.totalPrecio(candidad));
+                        contiene = true;
+
+                        System.out.println("\nCoste actual: " + elem.totalPrecio(candidad));
+
                         precioFinal += elem.totalPrecio(candidad);
-                        System.out.println("Quieres algo más?(s/n)");
+                        System.out.println("\n" + Colors.ANSI_CYAN + "// Quieres algo más?(s/n)" + Colors.ANSI_RESET);
+                        Messages.inputData();
                         mas = br.readLine().toLowerCase();
 
                         switch (mas) {
@@ -350,22 +322,26 @@ public class Test {
                             case "n":
                                 quieroMas = false;
 
-                                System.out.println("El precio total es: " + precioFinal);
+                                System.out.println("\nCoste total: " + Colors.ANSI_PURPLE_BACKGROUND + " " + precioFinal + " " + Colors.ANSI_RESET);
 
                                 break;
                             default:
-                                System.out.println("s/n");
+                                System.out.println(Colors.ANSI_RED + "\nIngresa letra s/n" + Colors.ANSI_RESET);
                                 break;
 
                         }
                     } else if (elem.getUnidades() < candidad) {
-                        System.out.println("el producto no tiene cantidad de " + candidad);
+                        System.out.println("\nNo existen tantas existencias del producto solicitado, stock: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET + " pedido: " + Colors.ANSI_RED + candidad + Colors.ANSI_RESET);
                     }
 
                 }
 
             }
 
-        }
+            if (contiene == false) {
+                System.out.println("\n" + Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
+            }
+        } while (quieroMas != false);
     }
+
 }
