@@ -1,11 +1,9 @@
 package Test;
 
 import Modelo.Producto;
-import Modelo.bebida.ConAlcohol;
-import Modelo.bebida.SinAlcohol;
+import Modelo.bebida.*;
 import Modelo.carne.Carne;
-import Modelo.verdura.Hortaliza;
-import Modelo.verdura.Seta;
+import Modelo.verdura.*;
 import Utils.Colors;
 import Utils.Funcions;
 
@@ -281,8 +279,9 @@ public class Test {
         int candidad;
         double precioFinal = 0;
         boolean contiene = false;
-        boolean existe = true, quieroMas = true;
+        boolean quieroMas = true;
         String nombre, mas = null;
+        
         System.out.println("\nContenido:\n-");
         for (Producto elem : productos) {
             System.out.println(elem.toString());
@@ -296,8 +295,7 @@ public class Test {
 
             for (Producto elem : productos) {
 
-                if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {
-                    existe = true;
+                if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {                    
                     contiene = true;
                     System.out.println("\n" + Colors.ANSI_CYAN + "// Cuantos quieres comprar ?" + Colors.ANSI_RESET);
                     Messages.inputData();
