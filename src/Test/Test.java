@@ -85,7 +85,7 @@ public class Test {
         boolean salir = false;
 
         do {
-            System.out.println("\n" + Colors.ANSI_PURPLE + "----------MENU----------" + Colors.ANSI_RESET);
+            System.out.println("\n" + Colors.ANSI_PURPLE + "------------------------" + Colors.ANSI_RESET + "\n          MENU" + "\n" + Colors.ANSI_PURPLE + "------------------------" + Colors.ANSI_RESET);
             System.out.println("1. Añadir productos");
             System.out.println("2. Ver/listar productos");
             System.out.println("3. Editar productos");
@@ -117,6 +117,7 @@ public class Test {
 
                     char secExit;
                     Messages.exitSec();
+                    Messages.inputData();
                     secExit = leerUsuario.next().charAt(0);
 
                     if (secExit == 's') {
@@ -330,6 +331,8 @@ public class Test {
                                 break;
 
                         }
+                        
+      
                     } else if (elem.getUnidades() < candidad) {
                         System.out.println("\nNo existen tantas existencias del producto solicitado, stock: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET + " pedido: " + Colors.ANSI_RED + candidad + Colors.ANSI_RESET);
                     }
@@ -341,6 +344,7 @@ public class Test {
             if (contiene == false) {
                 System.out.println("\n" + Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
             }
+            contiene = false;
         } while (quieroMas != false);
     }
 
