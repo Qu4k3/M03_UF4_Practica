@@ -20,6 +20,7 @@ public class Funcions {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static Scanner leerUsuario = new Scanner(System.in);
 
+    //El metodo hace leer los datos del archivo y añadir al objeto
     public static ArrayList<Producto> addProductosDesdeArchivo() throws IOException {
         ArrayList<Producto> productos = new ArrayList<>();
         FileInputStream fis = new FileInputStream("productos.dat");
@@ -39,9 +40,10 @@ public class Funcions {
 
     }
 
+    //El metodo pide tipo del producto cuando encontrado el tipo del producto pide los datos del producto.
     public static void addDatos(ArrayList<Producto> productos) throws IOException {
         int option;
-        boolean salir = false;
+        boolean salir = false, exist = false;;
 
         do {
             System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de Producto que quieres introducir"
@@ -52,51 +54,133 @@ public class Funcions {
             option = leerUsuario.nextInt();
             switch (option) {
                 case 1:
+                    try {
+                        System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato;azucarada" + Colors.ANSI_RESET);
+                        String linea = br.readLine();
+                        String[] str = linea.split(";");
+                        for (Producto elem : productos) {
+                            if (str[0].equalsIgnoreCase(elem.getNombreProducto())) {
+                                exist = true;
+                            }
+                        }
 
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato;azucarada" + Colors.ANSI_RESET);
+                        if (exist == true) {
+                            System.out.println("El producto ya existe");
+                            exist = false;
+                        } else {
+                            Producto p = new SinAlcohol(str[0], str[1], Integer.parseInt(str[2]), Boolean.parseBoolean(str[3]), str[4], str[5], Double.parseDouble(str[6]), str[7], Boolean.parseBoolean(str[8]));
+                            productos.add(p);
+                            System.out.println("Añadido con éxito");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "> Error de formato del dato introducido" + Colors.ANSI_RESET);
 
-                    String linea = br.readLine();
-                    String[] str = linea.split(";");
-                    Producto p = new SinAlcohol(str[0], str[1], Integer.parseInt(str[2]), Boolean.parseBoolean(str[3]), str[4], str[5], Double.parseDouble(str[6]), str[7], Boolean.parseBoolean(str[8]));
-                    productos.add(p);
-                    System.out.println("Añadido con éxito");
+                    }
 
                     break;
                 case 2:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato" + Colors.ANSI_RESET);
-                    String conAlcohol = br.readLine();
-                    String[] strConAlcohol = conAlcohol.split(";");
-                    Producto productoConAlcohol = new ConAlcohol(strConAlcohol[0], strConAlcohol[1], Integer.parseInt(strConAlcohol[2]), Boolean.parseBoolean(strConAlcohol[3]), strConAlcohol[4], strConAlcohol[5], Double.parseDouble(strConAlcohol[6]), strConAlcohol[7]);
-                    productos.add(productoConAlcohol);
-                    System.out.println("Añadido con éxito");
+
+                    try {
+                        System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;formato" + Colors.ANSI_RESET);
+                        String conAlcohol = br.readLine();
+                        String[] strConAlcohol = conAlcohol.split(";");
+                        for (Producto elem : productos) {
+                            if (strConAlcohol[0].equalsIgnoreCase(elem.getNombreProducto())) {
+                                exist = true;
+                            }
+                        }
+
+                        if (exist == true) {
+                            System.out.println("El producto ya existe");
+                            exist = false;
+                        } else {
+                            Producto productoConAlcohol = new ConAlcohol(strConAlcohol[0], strConAlcohol[1], Integer.parseInt(strConAlcohol[2]), Boolean.parseBoolean(strConAlcohol[3]), strConAlcohol[4], strConAlcohol[5], Double.parseDouble(strConAlcohol[6]), strConAlcohol[7]);
+                            productos.add(productoConAlcohol);
+                            System.out.println("Añadido con éxito");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "> Error de formato del dato introducido" + Colors.ANSI_RESET);
+
+                    }
                     break;
 
                 case 3:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;adobado? ;peso; animal" + Colors.ANSI_RESET);
-                    String carne = br.readLine();
-                    String[] strCarne = carne.split(";");
-                    // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, boolean adobado, double peso, String animal
-                    Producto productoCarne = new Carne(strCarne[0], strCarne[1], Integer.parseInt(strCarne[2]), Boolean.parseBoolean(strCarne[3]), strCarne[4], strCarne[5], Double.parseDouble(strCarne[6]), Boolean.parseBoolean(strCarne[7]), Double.parseDouble(strCarne[8]), strCarne[9]);
-                    productos.add(productoCarne);
-                    System.out.println("Añadido con éxito");
+                    try {
+                        System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio;adobado? ;peso; animal" + Colors.ANSI_RESET);
+                        String carne = br.readLine();
+                        String[] strCarne = carne.split(";");
+                        // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, boolean adobado, double peso, String animal
+
+                        for (Producto elem : productos) {
+                            if (strCarne[0].equalsIgnoreCase(elem.getNombreProducto())) {
+                                exist = true;
+                            }
+                        }
+
+                        if (exist == true) {
+                            System.out.println("El producto ya existe");
+                            exist = false;
+                        } else {
+                            Producto productoCarne = new Carne(strCarne[0], strCarne[1], Integer.parseInt(strCarne[2]), Boolean.parseBoolean(strCarne[3]), strCarne[4], strCarne[5], Double.parseDouble(strCarne[6]), Boolean.parseBoolean(strCarne[7]), Double.parseDouble(strCarne[8]), strCarne[9]);
+                            productos.add(productoCarne);
+                            System.out.println("Añadido con éxito");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "> Error de formato del dato introducido" + Colors.ANSI_RESET);
+
+                    }
                     break;
                 case 4:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen; preparadoParaCocido" + Colors.ANSI_RESET);
-                    String hortaliza = br.readLine();
-                    String[] strHortaliza = hortaliza.split(";");
-                    // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, double peso, String origen, boolean preparadoParaCocido
-                    Producto productoHortaliza = new Hortaliza(strHortaliza[0], strHortaliza[1], Integer.parseInt(strHortaliza[2]), Boolean.parseBoolean(strHortaliza[3]), strHortaliza[4], strHortaliza[5], Double.parseDouble(strHortaliza[6]), Double.parseDouble(strHortaliza[7]), strHortaliza[8], Boolean.parseBoolean(strHortaliza[9]));
-                    productos.add(productoHortaliza);
-                    System.out.println("Añadido con éxito");
+                    try {
+                        System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen; preparadoParaCocido" + Colors.ANSI_RESET);
+                        String hortaliza = br.readLine();
+                        String[] strHortaliza = hortaliza.split(";");
+                        // String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precioPorKilo, double peso, String origen, boolean preparadoParaCocido
+
+                        for (Producto elem : productos) {
+                            if (strHortaliza[0].equalsIgnoreCase(elem.getNombreProducto())) {
+                                exist = true;
+                            }
+                        }
+
+                        if (exist == true) {
+                            System.out.println("El producto ya existe");
+                            exist = false;
+                        } else {
+                            Producto productoHortaliza = new Hortaliza(strHortaliza[0], strHortaliza[1], Integer.parseInt(strHortaliza[2]), Boolean.parseBoolean(strHortaliza[3]), strHortaliza[4], strHortaliza[5], Double.parseDouble(strHortaliza[6]), Double.parseDouble(strHortaliza[7]), strHortaliza[8], Boolean.parseBoolean(strHortaliza[9]));
+                            productos.add(productoHortaliza);
+                            System.out.println("Añadido con éxito");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "> Error de formato del dato introducido" + Colors.ANSI_RESET);
+
+                    }
                     break;
                 case 5:
-                    System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen" + Colors.ANSI_RESET);
-                    String seta = br.readLine();
-                    String[] strSeta = seta.split(";");
-                    // nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen 
-                    Producto productoSeta = new Seta(strSeta[0], strSeta[1], Integer.parseInt(strSeta[2]), Boolean.parseBoolean(strSeta[3]), strSeta[4], strSeta[5], Double.parseDouble(strSeta[6]), Double.parseDouble(strSeta[7]), strSeta[8]);
-                    productos.add(productoSeta);
-                    System.out.println("Añadido con éxito");
+                    try {
+                        System.out.println("\nFormato: " + Colors.ANSI_YELLOW + "nombre;marca;unidades;mantener fresco?;fecha;proveedor;precio; peso; origen" + Colors.ANSI_RESET);
+                        String seta = br.readLine();
+                        String[] strSeta = seta.split(";");
+                        // nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precioPorKilo, peso, origen 
+
+                        for (Producto elem : productos) {
+                            if (strSeta[0].equalsIgnoreCase(elem.getNombreProducto())) {
+                                exist = true;
+                            }
+                        }
+
+                        if (exist == true) {
+                            System.out.println("El producto ya existe");
+                            exist = false;
+                        } else {
+                            Producto productoSeta = new Seta(strSeta[0], strSeta[1], Integer.parseInt(strSeta[2]), Boolean.parseBoolean(strSeta[3]), strSeta[4], strSeta[5], Double.parseDouble(strSeta[6]), Double.parseDouble(strSeta[7]), strSeta[8]);
+                            productos.add(productoSeta);
+                            System.out.println("Añadido con éxito");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n" + Colors.ANSI_RED + "> Error de formato del dato introducido" + Colors.ANSI_RESET);
+
+                    }
                     break;
                 case 6:
                     salir = true;
@@ -106,8 +190,10 @@ public class Funcions {
                     break;
             }
         } while (salir == false);
+
     }
 
+    //El metodo hace listar todo los productos que guardamos en el objeto
     public static void listarTodoProducto(ArrayList<Producto> productos) {
         System.out.println("");
         int count = 0;
@@ -118,6 +204,7 @@ public class Funcions {
         System.out.println(Colors.ANSI_YELLOW + "\nTotal productos: " + count + Colors.ANSI_RESET);
     }
 
+    //El metodo pide el tipo al usuario y buscar en String para mostrar los productos con el mismo tipo
     public static void listarPorTipoProducto(ArrayList<Producto> productos) throws IOException {
         String opt;
         int count = 0;
@@ -142,6 +229,7 @@ public class Funcions {
         }
     }
 
+    //El metodo pide el nombre del proveedor y muestra los productos con el mismo proveedor
     public static void listarPorProveedor(ArrayList<Producto> productos) throws IOException {
         String opt;
         int count = 0;
@@ -167,6 +255,7 @@ public class Funcions {
 
     }
 
+    //El metodo pide el nombre del proveedor y borrar los productos del mismo proveedor
     public static void borrarPorProveedor(ArrayList<Producto> productos) throws IOException {
         Producto auxProducto;
         String opt;
@@ -189,6 +278,7 @@ public class Funcions {
         }
     }
 
+    //El metodo pide el nombre del producto y borrar el producto con mismo nombre
     public static void borrarPorNombre(ArrayList<Producto> productos) throws IOException {
         Producto auxProducto;
         String opt;
@@ -212,86 +302,89 @@ public class Funcions {
 
     }
 
+    //El metodo pide el nombre de producto cuando encontrado el producto pide la cantidad al usuario
     public static void editarCantidad(ArrayList<Producto> productos) throws IOException {
-        
+
         String nombreProducto;
         int cantidad;
         boolean existe = false;
-        
+
         System.out.println("\n" + Colors.ANSI_CYAN + "// Que producto quieres editar?" + Colors.ANSI_RESET);
-        Messages.inputData(); 
+        Messages.inputData();
         nombreProducto = br.readLine();
-        
+
         System.out.println("");
         for (Producto elem : productos) {
             if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
                 existe = true;
                 System.out.println(elem.toString());
-                
+
                 System.out.println("\n" + Colors.ANSI_CYAN + "// Introduce nuevo stock" + Colors.ANSI_RESET);
                 Messages.inputData();
                 cantidad = Integer.parseInt(br.readLine());
-                
+
                 elem.setUnidades(elem.getUnidades() + cantidad);
-                
+
                 System.out.println("\nNuevo sotck: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET);
-            } 
+            }
         }
         if (existe == false) {
             System.out.println(Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
         }
     }
 
+    //El metodo pide el nombre de producto cuando encontrado el producto pide el precio al usuario
     public static void editarPrecio(ArrayList<Producto> productos) throws IOException {
-        
+
         String nombreProducto;
         double precio;
         boolean existe = false;
-        
+
         System.out.println("\n" + Colors.ANSI_CYAN + "// Que producto quieres editar?" + Colors.ANSI_RESET);
-        Messages.inputData(); 
+        Messages.inputData();
         nombreProducto = br.readLine();
-        
+
         System.out.println("");
         for (Producto elem : productos) {
             if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
                 existe = true;
                 System.out.println(elem.toString());
-                
+
                 System.out.println("\n" + Colors.ANSI_CYAN + "// Introduce nuevo precio" + Colors.ANSI_RESET);
                 Messages.inputData();
                 precio = Double.parseDouble(br.readLine());
                 elem.setPrecio(precio);
-                System.out.println("\nPrecio editado correctamente "+elem.getPrecio());
-            } 
+                System.out.println("\nPrecio editado correctamente " + elem.getPrecio());
+            }
         }
         if (existe == false) {
             System.out.println(Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
         }
     }
 
+    //El metodo pide el nombre de producto cuando encontrado el producto pide el nombre de proveedor al usuario
     public static void editarProveedor(ArrayList<Producto> productos) throws IOException {
- 
+
         String nombreProducto, proveedor;
         boolean existe = false;
-        
+
         System.out.println("\n" + Colors.ANSI_CYAN + "// Que producto quieres editar?" + Colors.ANSI_RESET);
-        Messages.inputData(); 
+        Messages.inputData();
         nombreProducto = br.readLine();
-        
+
         System.out.println("");
         for (Producto elem : productos) {
             if (elem.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
                 existe = true;
-                
+
                 System.out.println(elem.toString());
-                
+
                 System.out.println("\n" + Colors.ANSI_CYAN + "// Introduce nuevo nombre de proveedor" + Colors.ANSI_RESET);
                 Messages.inputData();
                 proveedor = br.readLine();
-                
+
                 elem.setProveedor(proveedor);
-                
+
                 System.out.println("\nProveedor editado correctamente");
             }
         }

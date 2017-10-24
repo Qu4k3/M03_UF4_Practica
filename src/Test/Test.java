@@ -10,6 +10,7 @@ import Utils.Colors;
 import Utils.Funcions;
 
 import Utils.Messages;
+import com.sun.jndi.toolkit.ctx.Continuation;
 import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
@@ -79,6 +80,7 @@ public class Test {
         br.close();
     }
 
+    //Menu principal de la aplicación
     public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
 
         int option;
@@ -140,17 +142,20 @@ public class Test {
 
     }
 
+    //Metodo llamar a funcion para añadir datos
     public static void menuAddDatos(ArrayList<Producto> productos) throws IOException {
         try {
             Funcions.addDatos(productos);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             System.out.println("\n" + Colors.ANSI_RED + "> Ha habido un error al intentar añadir datos" + Colors.ANSI_RESET);
             System.out.println(Colors.ANSI_RED + "> Verifica que lo has escrito en el formato correcto" + Colors.ANSI_RESET + "\n");
 
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Hay que introducir numeros");
         }
-
     }
 
+    //Submenu de la opción listar los productos
     public static void menuListar(ArrayList<Producto> productos) throws IOException {
         int option;
         boolean salir = false;
@@ -187,6 +192,7 @@ public class Test {
 
     }
 
+    //Submenu de la opción editar los datos
     public static void menuEditarDatos(ArrayList<Producto> productos) throws IOException {
 
         int option;
@@ -224,6 +230,7 @@ public class Test {
 
     }
 
+    //Submenu de la opción borrar los datos
     public static void menuBorrarDatos(ArrayList<Producto> productos) throws IOException {
 
         int opt;
@@ -276,6 +283,7 @@ public class Test {
 
     }
 
+    //Submenu de la opcion vender
     public static void menuVender(ArrayList<Producto> productos) throws IOException {
 
         int candidad;
@@ -331,8 +339,7 @@ public class Test {
                                 break;
 
                         }
-                        
-      
+
                     } else if (elem.getUnidades() < candidad) {
                         System.out.println("\nNo existen tantas existencias del producto solicitado, stock: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET + " pedido: " + Colors.ANSI_RED + candidad + Colors.ANSI_RESET);
                     }
