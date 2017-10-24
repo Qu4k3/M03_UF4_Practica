@@ -309,7 +309,7 @@ public class Test {
                         elem.setUnidades(elem.getUnidades() - candidad);
                         contiene = true;
 
-                        System.out.println("\nCoste actual: " + elem.totalPrecio(candidad));
+                        System.out.println("\nCoste: " + elem.totalPrecio(candidad));
 
                         precioFinal += elem.totalPrecio(candidad);
                         System.out.println("\n" + Colors.ANSI_CYAN + "// Quieres algo más?(s/n)" + Colors.ANSI_RESET);
