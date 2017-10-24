@@ -5,7 +5,7 @@ import Utils.Colors;
 public class SinAlcohol extends Bebida {
 
     private boolean azucarada;
-    private final double IMPUESTOAZUCAR = 0.12;
+    private final double IMPUESTO_AZUCAR = 0.12;
 
     public SinAlcohol(String nombreProducto, String nombreMarca, int unidades, boolean conservarFresco, String fechaAdd, String proveedor, double precio, String formato, boolean azucarada) {
         super(nombreProducto, nombreMarca, unidades, conservarFresco, fechaAdd, proveedor, precio, formato);
@@ -14,7 +14,7 @@ public class SinAlcohol extends Bebida {
 
     @Override
     public double totalPrecio(int unidades) {
-        return (unidades * precio * IVA) + (unidades * IMPUESTOAZUCAR);
+        return (unidades * precio * IVA) + (unidades * IMPUESTO_AZUCAR);
     }
 
     @Override

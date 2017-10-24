@@ -61,29 +61,4 @@ public class Messages {
         System.out.println("\n> " + Colors.ANSI_RED + "No se puede leer correctamente el fichero, verifica que los datos se hayan introducido correctamente" + Colors.ANSI_RESET);
     }
 
-    // --- Solicitudes ---
-    public static void askMatricula() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa la matrícula del vehículo" + Colors.ANSI_RESET);
-    }
-
-    public static void askNumDiasAlquiler() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el numero de dias de alquiler" + Colors.ANSI_RESET);
-    }
-
-    public static void askNumPlazas() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el numero de plazas del vehículo" + Colors.ANSI_RESET);
-    }
-
-    public static void askPMA() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el PMA del vehículo" + Colors.ANSI_RESET);
-    }
-
-    public static void askTipoVehiculo() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa el tipo de vehículo que quieres introducir" + Colors.ANSI_RESET + "\n     (c) coche\n     (m) microbus\n     (f) furgoneta de carga\n     (k) camión");
-    }
-
-    public static void askMatriculaVehiculo() {
-        System.out.println("\n" + Colors.ANSI_CYAN + "// Ingresa matrícula del vehículo" + Colors.ANSI_RESET);
-    }
-
 }

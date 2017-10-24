@@ -1,13 +1,16 @@
 package Test;
 
 import Modelo.Producto;
-import Modelo.bebida.*;
+import Modelo.bebida.ConAlcohol;
+import Modelo.bebida.SinAlcohol;
 import Modelo.carne.Carne;
-import Modelo.verdura.*;
+import Modelo.verdura.Hortaliza;
+import Modelo.verdura.Seta;
 import Utils.Colors;
 import Utils.Funcions;
 
 import Utils.Messages;
+import com.sun.jndi.toolkit.ctx.Continuation;
 import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
@@ -20,7 +23,6 @@ import java.io.ObjectOutputStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class Test {
 
@@ -33,7 +35,7 @@ public class Test {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         // Código de testing para añadir contenido en el fichero
-    /*
+        /*
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("productos.dat"));
 
         Producto bebidaSinAlcohol = new SinAlcohol("cola", "coca", 5, true, "15/12/2017", "cocacola", 1, "lata", true);
@@ -48,7 +50,7 @@ public class Test {
         oos.writeObject(carne);
         oos.writeObject(verduraHortaliza);
         oos.writeObject(verduraSeta);
-    */
+         */
 
  /*
         SinAlcohol
@@ -78,6 +80,7 @@ public class Test {
         br.close();
     }
 
+    //Menu principal de la aplicación
     public static void menuPrincipal(ArrayList<Producto> productos) throws IOException {
 
         int option;
@@ -139,17 +142,20 @@ public class Test {
 
     }
 
+    //Metodo llamar a funcion para añadir datos
     public static void menuAddDatos(ArrayList<Producto> productos) throws IOException {
         try {
             Funcions.addDatos(productos);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             System.out.println("\n" + Colors.ANSI_RED + "> Ha habido un error al intentar añadir datos" + Colors.ANSI_RESET);
             System.out.println(Colors.ANSI_RED + "> Verifica que lo has escrito en el formato correcto" + Colors.ANSI_RESET + "\n");
 
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Hay que introducir numeros");
         }
-
     }
 
+    //Submenu de la opción listar los productos
     public static void menuListar(ArrayList<Producto> productos) throws IOException {
         int option;
         boolean salir = false;
@@ -186,6 +192,7 @@ public class Test {
 
     }
 
+    //Submenu de la opción editar los datos
     public static void menuEditarDatos(ArrayList<Producto> productos) throws IOException {
 
         int option;
@@ -223,6 +230,7 @@ public class Test {
 
     }
 
+    //Submenu de la opción borrar los datos
     public static void menuBorrarDatos(ArrayList<Producto> productos) throws IOException {
 
         int opt;
@@ -275,14 +283,14 @@ public class Test {
 
     }
 
+    //Submenu de la opcion vender
     public static void menuVender(ArrayList<Producto> productos) throws IOException {
 
         int candidad;
         double precioFinal = 0;
         boolean contiene = false;
-        boolean quieroMas = true;
+        boolean existe = true, quieroMas = true;
         String nombre, mas = null;
-        
         System.out.println("\nContenido:\n-");
         for (Producto elem : productos) {
             System.out.println(elem.toString());
@@ -296,9 +304,9 @@ public class Test {
 
             for (Producto elem : productos) {
 
-                if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {                    
+                if (elem.getNombreProducto().equalsIgnoreCase(nombre)) {
+                    existe = true;
                     contiene = true;
-                    
                     System.out.println("\n" + Colors.ANSI_CYAN + "// Cuantos quieres comprar ?" + Colors.ANSI_RESET);
                     Messages.inputData();
                     candidad = Integer.parseInt(br.readLine());
@@ -319,33 +327,32 @@ public class Test {
                         switch (mas) {
                             case "s":
                                 quieroMas = true;
-                                
                                 break;
                             case "n":
                                 quieroMas = false;
-                                
-                                double roundOff = (double) Math.round(precioFinal * 100) / 100;
-                                System.out.println("\nCoste total: " + Colors.ANSI_PURPLE_BACKGROUND + " " + roundOff + " " + Colors.ANSI_RESET);
+
+                                System.out.println("\nCoste total: " + Colors.ANSI_PURPLE_BACKGROUND + " " + precioFinal + " " + Colors.ANSI_RESET);
 
                                 break;
                             default:
                                 System.out.println(Colors.ANSI_RED + "\nIngresa letra s/n" + Colors.ANSI_RESET);
-                                
                                 break;
-                        }                        
-      
+
+                        }
+
                     } else if (elem.getUnidades() < candidad) {
                         System.out.println("\nNo existen tantas existencias del producto solicitado, stock: " + Colors.ANSI_GREEN + elem.getUnidades() + Colors.ANSI_RESET + " pedido: " + Colors.ANSI_RED + candidad + Colors.ANSI_RESET);
                     }
+
                 }
+
             }
 
             if (contiene == false) {
                 System.out.println("\n" + Colors.ANSI_RED + "No existe ningun producto con ese nombre" + Colors.ANSI_RESET);
             }
-            
             contiene = false;
-            
         } while (quieroMas != false);
     }
+
 }
